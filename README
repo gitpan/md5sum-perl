@@ -1,0 +1,72 @@
+NAME
+    md5sum-perl - generates or checks MD5 message digests
+
+SYNOPSIS
+     md5sum-perl [-bv] [-c [file]] | [file...]
+
+DESCRIPTION
+    md5sum-perl is a feature for feature compatible version of md5sum(1)
+    written in Perl.
+
+    md5sum generates or checks MD5 checksums. The algorithm to generate the
+    checksum is reasonably fast and strong enough for most cases. Exact
+    specification of the algorithm is in RFC 1321.
+
+    Normally md5sum generates checksums of all files given to it as a
+    parameter and prints the checksums followed by the filenames. If,
+    however, -c is specified, only one filename parameter is allowed. This
+    file should contain checksums and filenames to which these checksums
+    refer to, and the files listed in that file are checked against the
+    checksums listed there. See option -c for more information.
+
+OPTIONS
+    -b      Use binary mode. In unix environment, only difference between
+            this and the normal mode is an asterix preceding the filename in
+            the output.
+
+    -c      Check md5sum of all files listed in file against the checksum
+            listed in the same file. The actual format of that file is the
+            same as output of md5sum. That is, each line in the file
+            describes a file. A line looks like:
+
+            <MD5 checksum> <filename>
+
+            So, for example, if a file was created and its message digest
+            calculated like so:
+
+            echo foo > md5-test-file; md5sum md5-test-file
+
+            md5sum would report:
+
+            d3b07384d113edec49eaa6238ad5ff00 md5-test-file
+
+    -v      Be more verbose. Print filenames when checking (with -c).
+
+BUGS
+    The related MD4 message digest algorithm was broken in October 1995. MD5
+    isn't looking as secure as it used to.
+
+    This manpage is not quite accurate and has formatting inconsistent with
+    other manpages.
+
+    md5sum does not accept standard options like --help.
+
+HISTORY
+    0.1     Feature complete beta release.
+
+    0.01    Original version; created by h2xs 1.1.1.4 with options: -ACX -m
+            md5sum
+
+AUTHOR
+    md5sum was originally written by Branko Lankester, and modified
+    afterwards by Colin Plumb and Ian Jackson <ijackson@gnu.ai.mit.edu>.
+    Manual page was added by Juho Vuori <javuori@cc.helsinki.fi>.
+
+    md5sum-perl is written by Paul Baker <md5sum@paulbaker.net> using the
+    Digest::MD5 module currently maintained by Gisle Aas
+    <gisle@ActiveState.com>.
+
+SEE ALSO
+    perl(1), md5sum(1), the Digest::MD5 manpage.
+
+$Id: README,v 1.1 2002/03/14 19:42:49 pbaker Exp $
